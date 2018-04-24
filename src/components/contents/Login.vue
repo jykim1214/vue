@@ -23,13 +23,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-12" style="text-align:right">
-                        <button type="submit" class="btn btn-default">로그인</button>             
+                    <div class="col-sm-12" style="text-align:center">
+                        <button type="submit" class="btn btn-default">로그인</button>
+                        <button type="submit" class="btn btn-default">회원가입</button>
                     </div>
-                </div>
-                <div align="center">
-                    <a style="font-size:15px; margin-right:10px;">ID/PW 찾기</a>|
-                    <a style="font-size:15px; margin-left:10px;">회원가입</a>
                 </div>
             </form>
         </div>
