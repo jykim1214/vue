@@ -24,8 +24,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12" style="text-align:center">
-                        <button type="submit" class="btn btn-default">로그인</button>
-                        <button type="submit" class="btn btn-default">회원가입</button>
+                        <button type="submit" class="btn btn-default"><a href="./#/list">로그인</a></button>
+                        <button type="submit" class="btn btn-default"><a href="./#/join">회원가입</a></button>
                     </div>
                 </div>
             </form>
@@ -42,7 +42,7 @@ export default {
 
 <style>
 .row{
-    margin-top: 30px;
+    margin-top: 80px;
     margin-bottom: 20px;
 }
 </style>

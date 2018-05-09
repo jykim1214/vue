@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TodoPage from '@/components/TodoPage'
+import Example from '@/components/Example'
 import Home from '@/components/Home'
 import Join from '@/components/contents/Join'
 import Board from '@/components/contents/Board'
 import List from '@/components/contents/List'
+import UserList from '@/components/contents/UserList'
 
 Vue.use(Router)
 
@@ -17,13 +19,13 @@ export default new Router({
     },
     {
       path: '/example',
-      name: 'example',
+      name: 'Example',
       component: Example
     },
     {
-      path: '/todos',
-      name: 'TodoPage',
-      component: TodoPage
+      path: '/userList',
+      name: 'UserList',
+      component: UserList
     },
     {
       path: '/join',

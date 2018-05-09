@@ -2,46 +2,29 @@
     <div class="container">
         <app-header></app-header>
         <div id="list">
-        <h3>게시판</h3>
+        <h3>회원 정보</h3>
         </div>
         
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
-                <th style="width:5%;">번호</th>
-                <th style="width:65%;">제목</th>
-                <th style="width:10%;">작성자</th>
-                <th style="width:10%;">날짜</th>
-                <th style="width:10%;">조회수</th>
+                <th>아이디</th>
+                <th>비밀번호</th>
+                <th>이름</th>
+                <th>이메일</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>john</td>
-                <td>2018-04-20</td>
-                <td>2</td>
+            <tr v-for="user in joinData">
+                <td>{{user.id}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>mary</td>
-                <td>2018-03-24</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>july</td>
-                <td>2018-04-23</td>
-                <td>5</td>
-            </tr>
+            
             </tbody>
         </table>
-        <div id="write">
-            <a href="./#/board">글쓰기</a>
-        </div>
+        
         <ul class="pagination" style="text-align:center">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -57,7 +40,23 @@
 
 <script>
 export default {
-  
+  name:'app',
+  data: function() {
+      return {
+          joinData: this.getUserList()
+      }
+  },
+  methods:{
+      getUserList: function(){
+          this.$http.get('http://localhost:8081/users/')
+          .then(response => {
+              this.joinData=response.data._embedded.users;
+                console.log('success');
+            }, error=>{
+                console.log(error);
+            });
+      }
+  }
 }
 </script>
 

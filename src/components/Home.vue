@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-      <app-header></app-header>
       <app-detail></app-detail>
-      <app-footer></app-footer>
+      
   </div>
 </template>
 
