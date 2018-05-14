@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <app-header></app-header>
         <div id="list">
         <h3>회원 정보</h3>
         </div>
@@ -34,7 +33,6 @@
             <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
-        <app-footer></app-footer>
     </div>
 </template>
 

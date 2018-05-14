@@ -1,6 +1,5 @@
 <template>
 <div class="container" style="bord:1px">
-    <app-header></app-header>
     <h2 class="text-center">글 작성</h2>
     <form v-on:submit.prevent="submit(boardData)">
         <div class="row">
@@ -53,7 +52,6 @@
             <button type="submit" class="btn btn-default" style="width: 100px;" @click="checkBoardData(boardData)" ><a v-bind:href="url">가입</a></button>
         </div>
     </form>
-    <app-footer></app-footer>
 </div>
 </template>
 

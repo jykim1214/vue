@@ -1,6 +1,5 @@
 <template>
     <div class="container" style="bord:1px">
-        <app-header></app-header>
         <form class="form" v-on:submit.prevent="submit(joinData)">
             <h3>회원가입</h3>
             <div class="form-inline">
@@ -23,9 +22,8 @@
                 <label for="e-mail">이메일: </label>
                 <input type="email" class="form-control" id="email" v-model="joinData.email" required >
             </div>
-            <button type="submit" class="btn btn-light" @click="checkJoinData(joinData)" >가입</button>
+            <button type="submit" class="btn btn-light" @click="checkJoinData(joinData, userData)" >가입</button>
         </form>
-        <app-footer></app-footer>
     </div>
 </template>
 
@@ -34,17 +32,20 @@
         name: 'Join',
         data(){
             return {
+                userData:this.getUserList(),
                 joinData:[]
             }
         },
         methods:{
+            getUserList: function(userData){
+                this.$http.get('http://localhost:8081/users/')
+                .then(response => {
+                    this.userData=response.data._embedded.users;
+                }, error=>{
+                    console.log(error);
+                });
+            },
             submit: function(joinData) {
-                /*localStorage.setItem('id', joinData.id);
-                localStorage.setItem('pwd', joinData.pwd);
-                localStorage.setItem('pwdRe', joinData.pwdRe);
-                localStorage.setItem('name', joinData.name);
-                localStorage.setItem('email', joinData.email);
-                console.log('localStorage 저장!!');*/
                 let req = {
                     "id":joinData.id,
                     "password":joinData.pwd,
@@ -62,18 +63,15 @@
                     console.log(error);
                 });
             },
-            checkJoinData: function(joinData){
-                if(joinData.id==null) {
-                    alert('id를 입력하세요.');
-                } else if(joinData.pwd==null){
-                    alert('비밀번호를 입력하세요.');
-                } else if(joinData.pwdRe==null){
-                    alert('비밀번호 확인 값을 입력하세요.');
-                } else if(joinData.name==null){
-                    alert('이름을 입력하세요.');
-                } else if(joinData.email==null){
-                    alert('이메일 주소를 입력하세요.');
-                } else if(joinData.pwd!=joinData.pwdRe){
+            checkJoinData: function(joinData, userData){
+                for(var i=0; i<userData.length; i++) {
+                    if(joinData.id==userData[i].id){
+                        alert("id 중복!!");
+                        break;
+                    }
+                }
+
+                if(joinData.pwd!=joinData.pwdRe){
                     alert('비밀번호 확인 값이 일치하지 않습니다.');
                 }
             }
