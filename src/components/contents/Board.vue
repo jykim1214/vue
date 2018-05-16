@@ -44,12 +44,12 @@
                     <label for="file" class="control-label">첨부파일</label>
                 </div>
                 <div class="col-sm-10 btn-file" style="width:100px">
-                    <input type="file" data-display-target="attachFile" v-on:change="boardData.file" required>
+                    <input type="file" data-display-target="attachFile" @change="boardData.file" required>
                 </div>
             </div>
         </div>
         <div class="row text-center">
-            <button type="submit" class="btn btn-default" style="width: 100px;" @click="checkBoardData(boardData)" ><a v-bind:href="url">가입</a></button>
+            <button type="submit" class="btn btn-default" style="width: 100px;" @click="checkBoardData(boardData)" >작성하기</button>
         </div>
     </form>
 </div>
@@ -77,7 +77,7 @@ export default {
             localStorage.setItem('content', boardData.content);
             localStorage.setItem('file', boardData.file);
 
-            this.$http.post('http://localhost:8081/board/',boardData)
+            this.$http.post('http://localhost:8081/boards/',boardData)
             .then(response => {
                 url:"./#/login",
                 console.log('success');
@@ -102,7 +102,7 @@ export default {
 
 <style>
 .container{
-    margin-top:30px;
+    margin-top:50px;
 }
     form{
         text-align: left;

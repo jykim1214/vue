@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <app-header></app-header>
         <div id="list">
         <h3>게시판</h3>
         </div>
@@ -36,7 +35,6 @@
             <li class="page-item"><a class="page-link" href="#">5</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
-        <app-footer></app-footer>
     </div>
 </template>
 
@@ -50,7 +48,7 @@ export default {
   },
   methods:{
       getBoardData: function(){
-          this.$http.get('http://localhost:8081/board/')
+          this.$http.get('http://localhost:8081/boards/')
           .then(response => {
               this.boardData=response.data._embedded.board;
                 console.log('success');
@@ -64,7 +62,7 @@ export default {
 
 <style>
 .container{
-    margin-top:30px;
+    margin-top:50px;
 }
     #container {
       width: 80%;
