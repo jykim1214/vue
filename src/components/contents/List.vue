@@ -16,26 +16,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>john</td>
-                <td>2018-04-20</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>mary</td>
-                <td>2018-03-24</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td id="title"><a href="">글2</a></td>
-                <td>july</td>
-                <td>2018-04-23</td>
-                <td>5</td>
+            <tr v-for="board in boardData">
+                <td>{{board.num}}</td>
+                <td>{{board.title}}</td>
+                <td>{{board.name}}</td>
+                <td>{{board.date}}</td>
             </tr>
             </tbody>
         </table>
@@ -57,7 +42,23 @@
 
 <script>
 export default {
-  
+  name:'app',
+  data: function() {
+      return {
+          boardData: this.getBoardData()
+      }
+  },
+  methods:{
+      getBoardData: function(){
+          this.$http.get('http://localhost:8081/board/')
+          .then(response => {
+              this.boardData=response.data._embedded.board;
+                console.log('success');
+            }, error=>{
+                console.log(error);
+            });
+      }
+  }
 }
 </script>
 

@@ -22,7 +22,7 @@
                 <label for="e-mail">이메일: </label>
                 <input type="email" class="form-control" id="email" v-model="joinData.email" required >
             </div>
-            <button type="submit" class="btn btn-light" @click="checkJoinData(joinData, userData)" >가입</button>
+            <button type="submit" class="btn btn-default" @click="checkJoinData(joinData, userData); href='#'" >가입</button>
         </form>
     </div>
 </template>
@@ -62,6 +62,7 @@
                 .catch((error) => {
                     console.log(error);
                 });
+                href="http://localhost:8080/#/";
             },
             checkJoinData: function(joinData, userData){
                 for(var i=0; i<userData.length; i++) {
@@ -80,9 +81,9 @@
 </script>
 
 <style>
-.container{
-    margin-top:20px;
-}
+    .container{
+        margin-top:40px;
+    }
     .form-control{
         margin-top: 10px;
         text-align: left;
@@ -97,7 +98,7 @@
     #id, #pwd, #email, #usr, #pwdRe{
         width:40%;
     }
-    button{
+    a{
         margin-top:20px; 
         text-align:center;
     }
