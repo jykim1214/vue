@@ -14,7 +14,6 @@
     "localforage": "^1.7.1",
     "vue": "^2.5.2",
     "vue-localstorage": "^0.6.2",
-    "vue-materialize-datatable": "^0.7.4",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
