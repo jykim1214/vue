@@ -46,9 +46,14 @@ export default {
   },
   methods:{
       getUserList: function(){
-          this.$http.get('http://localhost:8081/users/')
-          .then(response => {
-              this.joinData=response.data._embedded.users;
+            this.$http.get('http://localhost:8081/users/')
+            .then(result => {
+                console.log('-----------result-------');
+                console.log(result);
+            }, response => {
+                console.log('----------------- response --------------------------');
+                console.log(response);
+                this.joinData=response.data._embedded.users;
                 console.log('success');
             }, error=>{
                 console.log(error);
