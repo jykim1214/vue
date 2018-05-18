@@ -44,12 +44,12 @@
                     <label for="file" class="control-label">첨부파일</label>
                 </div>
                 <div class="col-sm-10 btn-file" style="width:100px">
-                    <input type="file" data-display-target="attachFile" @change="boardData.file" required>
+                    <input type="file" data-display-target="attachFile" v-on:change="handleFileChange">
                 </div>
             </div>
         </div>
         <div class="row text-center">
-            <button type="submit" class="btn btn-default" style="width: 100px;" @click="checkBoardData(boardData)" >작성하기</button>
+            <button type="submit" class="btn btn-default" style="width: 100px;">작성하기</button>
         </div>
     </form>
 </div>
@@ -60,50 +60,39 @@ export default {
   name: 'board',
   data(){
         return {
-            boardData:[
-                {title:''},
-                {name:''},
-                {date:''},
-                {content:''},
-                {file:''},
-            ]
+            boardData:[]        
         }
     },
     methods:{
+        handleFileChange(e){
+            console.log(e.target.files[0].name);
+            this.boardData.attachFile = e.target.files[0].name;
+        },
         submit: function(boardData) {
-            localStorage.setItem('title', boardData.title);
-            localStorage.setItem('name', boardData.name);
-            localStorage.setItem('date', boardData.date);
-            localStorage.setItem('content', boardData.content);
-            localStorage.setItem('file', boardData.file);
-
-            this.$http.post('http://localhost:8081/boards/',boardData)
+            console.log(boardData.attachFile);
+            let req = {
+                "title":boardData.title,
+                "name":boardData.name,
+                "date":boardData.date,
+                "content":boardData.content,
+                "attachFile":boardData.attachFile
+            }
+            
+            this.$http.post('http://localhost:8081/boards/', req)
             .then(response => {
-                url:"./#/login",
                 console.log('success');
             }, error=>{
-                console.log('error');
+                console.log(error);
             });
-        },
-        checkBoardData: function(boardData){
-            if(boardData.title==null) {
-                alert('제목을 입력하세요.');
-            } else if(boardData.name==null){
-                alert('작성자를 입력하세요.');
-            } else if(boardData.date==null){
-                alert('날짜를 입력하세요.');
-            } else if(boardData.content==null){
-                alert('내용을 입력하세요.');
-            }
         }
     }
 }
 </script>
 
 <style>
-.container{
-    margin-top:50px;
-}
+    .container{
+        margin-top:80px;
+    }
     form{
         text-align: left;
         margin-top: 10px;

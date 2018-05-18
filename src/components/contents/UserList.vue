@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="user in joinData">
+            <tr v-for="user in joinData" v-bind:key="user.key">
                 <td>{{user.id}}</td>
                 <td>{{user.password}}</td>
                 <td>{{user.name}}</td>
@@ -60,7 +60,7 @@ export default {
 
 <style>
 .container{
-    margin-top:30px;
+    margin-top:70px;
 }
     #container {
       width: 80%;

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-      <span style="margin-top:10px;"><a href="./"><img src="../assets/header.png"></a></span>
+      <!--<a href="./"><img src="../assets/header.png"></a>-->
     </div>
   </div>
 </template>
@@ -18,8 +18,8 @@ export default {
   left: 0px;
   top: 0px;
   width: 100%;
-  height:150px;
-  background: skyblue;
+  height:180px;
+  background: rgb(220, 245, 255);
   color: #f1f1f1;
   vertical-align: middle;
 }
