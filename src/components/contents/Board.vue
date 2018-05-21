@@ -1,7 +1,7 @@
 <template>
 <div class="container" style="bord:1px">
     <h2 class="text-center">글 작성</h2>
-    <form v-on:submit.prevent="submit(boardData)">
+    <form class="form" v-on:submit.prevent="submit(boardData)">
         <div class="row">
             <div class="col-md-12">
                 <form class="form-horizontal" role="form">
@@ -69,7 +69,6 @@ export default {
             this.boardData.attachFile = e.target.files[0].name;
         },
         submit: function(boardData) {
-            console.log(boardData.attachFile);
             let req = {
                 "title":boardData.title,
                 "name":boardData.name,
@@ -79,11 +78,12 @@ export default {
             }
             
             this.$http.post('http://localhost:8081/boards/', req)
-            .then(response => {
-                console.log('success');
-            }, error=>{
-                console.log(error);
-            });
+                .then((response) => {
+                    console.log('success');
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 }
@@ -91,7 +91,7 @@ export default {
 
 <style>
     .container{
-        margin-top:80px;
+        margin-top:70px;
     }
     form{
         text-align: left;

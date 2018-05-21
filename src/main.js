@@ -7,8 +7,8 @@ import axios from 'axios'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-Vue.prototype.$http = axios
-Vue.config.productionTip = false
+Vue.prototype.$http = axios;
+Vue.config.productionTip = false;
 
 Vue.component('app-header', Header)
 Vue.component('app-footer', Footer)
