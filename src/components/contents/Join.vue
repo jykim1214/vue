@@ -38,7 +38,7 @@
         },
         methods:{
             getUserList: function(userData){
-                this.$http.get('http://localhost:8081/users/')
+                this.$http.get('http://localhost:8081/users/', {'Access-Control-Allow-Origin': '*'})
                 .then(response => {
                     this.userData=response.data._embedded.users;
                 }, error=>{
