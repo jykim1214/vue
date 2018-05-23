@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import moment from 'moment'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -17,6 +18,7 @@ Vue.component('app-footer', Footer)
 new Vue({
   el: '#app',
   router,
+  moment,
   components: { Header, App, Footer },
   template: '<App/>'
 })

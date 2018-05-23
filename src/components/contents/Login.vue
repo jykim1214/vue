@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12" style="text-align:center">
-                        <button type="submit" class="btn btn-default" @click="checkJoinData(loginData, userData);"><a href="./#/list" >로그인</a></button>
+                        <button type="submit" class="btn btn-default" @click="checkLoginData(loginData, userData);"><a href="./#/list" >로그인</a></button>
                         <button type="submit" class="btn btn-default"><a href="./#/join">회원가입</a></button>
                     </div>
                 </div>
@@ -67,12 +67,12 @@ export default {
                     console.log(error);
                 });
             },
-            checkJoinData: function(loginData, userData){
+            checkLoginData: function(loginData, userData){
                 for(var i=0; i<userData.length; i++) {
-                    if(loginData.id==userData[i].id){
+                    if(loginData.id!=userData[i].id){
                         alert("id 중복!!");
                         break;
-                    } else if(loginData.password==userData[i].password) {
+                    } else if(loginData.password!=userData[i].password) {
                         alert("Password error!!");
                         break;
                     }

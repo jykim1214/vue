@@ -15,11 +15,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="boards in boardData" v-bind:key="boards.key">
-                <td>{{boards.num}}</td>
+            <tr v-for="(boards, index) in boardData" v-bind:key="boards.key">
+                <td>{{index}}</td>
                 <td>{{boards.title}}</td>
                 <td>{{boards.name}}</td>
                 <td>{{boards.date}}</td>
+                <td>0</td>
             </tr>
             </tbody>
         </table>
@@ -40,23 +41,23 @@
 
 <script>
 export default {
-  name:'app',
-  data: function() {
-      return {
-          boardData: this.getBoardData()
-      }
-  },
-  methods:{
-      getBoardData: function(){
-          this.$http.get('http://localhost:8081/boards/')
-          .then(response => {
-              this.boardData = response.data._embedded.boards;
+    name:'app',
+    data: function() {
+        return {
+            boardData: this.getBoardData()
+        }
+    },
+    methods:{
+        getBoardData: function(){
+            this.$http.get('http://localhost:8081/boards/')
+            .then(response => {
+                this.boardData = response.data._embedded.boards;
                 console.log('success');
             }, error=>{
                 console.log(error);
             });
-      }
-  }
+        }
+    }
 }
 </script>
 
