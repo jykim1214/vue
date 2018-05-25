@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
+Vue.prototype.moment = moment;
 
 Vue.component('app-header', Header)
 Vue.component('app-footer', Footer)
@@ -18,7 +19,6 @@ Vue.component('app-footer', Footer)
 new Vue({
   el: '#app',
   router,
-  moment,
   components: { Header, App, Footer },
   template: '<App/>'
 })
