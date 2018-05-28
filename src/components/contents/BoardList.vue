@@ -25,7 +25,7 @@
             </tbody>
         </table>
         <div id="write">
-            <a href="./#/board">글쓰기</a>
+            <a href="./#/write">글쓰기</a>
         </div>
         <ul class="pagination" style="text-align:center">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -58,8 +58,7 @@ export default {
             });
         },
         toggle: function(index){
-            alert(index + '번 쨰 항목 click!');
-            window.location.href ='./#/write';
+            window.location.href ='./#/board';
             return index;
         }
     }
