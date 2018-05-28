@@ -16,7 +16,7 @@
             </thead>
             <tbody>
             <tr v-for="(boards, index) in boardData" v-bind:key="boards.key" @click="toggle(index)">
-                <td>{{index}}</td>
+                <td>{{index+1}}</td>
                 <td>{{boards.title}}</td>
                 <td>{{boards.name}}</td>
                 <td>{{boards.date}}</td>
@@ -59,7 +59,8 @@ export default {
         },
         toggle: function(index){
             alert(index + '번 쨰 항목 click!');
-            window.location.href ='./#/board';
+            window.location.href ='./#/write';
+            return index;
         }
     }
 }

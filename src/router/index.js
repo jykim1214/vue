@@ -4,8 +4,9 @@ import TodoPage from '@/components/TodoPage'
 import Example from '@/components/Example'
 import Home from '@/components/Home'
 import Join from '@/components/contents/Join'
-import Board from '@/components/contents/Board'
-import List from '@/components/contents/List'
+import BoardWrite from '@/components/contents/BoardWrite'
+import BoardList from '@/components/contents/BoardList'
+import BoardContent from '@/components/contents/BoardContent'
 import UserList from '@/components/contents/UserList'
 
 Vue.use(Router)
@@ -34,13 +35,18 @@ export default new Router({
     },
     {
       path: '/list',
-      name: 'List',
-      component: List
+      name: 'BoardList',
+      component: BoardList
+    },
+    {
+      path: '/write',
+      name: 'BoardWrite',
+      component: BoardWrite
     },
     {
       path: '/board',
-      name: 'board',
-      component: Board
+      name: 'BoardContent',
+      component: BoardContent
     }
   ]
 })

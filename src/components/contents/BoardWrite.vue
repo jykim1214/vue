@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <button type="submit" class="btn btn-default" style="width: 100px;">작성하기</button>
+            <button type="submit" class="btn btn-default" style="width: 100px;" @click="toggle()">작성하기</button>
         </div>
     </form>
 </div>
@@ -84,6 +84,9 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        toggle: function(){
+            window.location.href ='./#/list';
         }
     }
 }
@@ -95,6 +98,5 @@ export default {
     }
     form{
         text-align: left;
-        margin-top: 10px;
     }
 </style>

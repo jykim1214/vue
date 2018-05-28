@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="submit(loginData)">
         <div class="col-md-12">
             <div class="row">
-                <label style="font-size:20px;">로그인</label>
+                <label style="font-size:20px; vertical-align:center;">로그인</label>
             </div>
             <form class="form-horizontal" role="form">
                 <div class="form-group">
