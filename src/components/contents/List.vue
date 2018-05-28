@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(boards, index) in boardData" v-bind:key="boards.key">
+            <tr v-for="(boards, index) in boardData" v-bind:key="boards.key" @click="toggle(index)">
                 <td>{{index}}</td>
                 <td>{{boards.title}}</td>
                 <td>{{boards.name}}</td>
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import  moment from 'moment'
 export default {
     name:'app',
     data: function() {
@@ -57,6 +56,10 @@ export default {
             }, error=>{
                 console.log(error);
             });
+        },
+        toggle: function(index){
+            alert(index + '번 쨰 항목 click!');
+            window.location.href ='./#/board';
         }
     }
 }
