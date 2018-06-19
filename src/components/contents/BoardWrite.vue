@@ -99,8 +99,8 @@ export default {
             
             this.$http.post('http://localhost:8081/boards/', req)
                 .then((response) => {
+                    this.$router.push({name:'BoardList'});
                     console.log('success');
-                    console.log(boardData);
                 })
                 .catch((error) => {
                     console.log(error);

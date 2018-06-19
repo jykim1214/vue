@@ -51,7 +51,6 @@ export default {
         getBoardData: function(){
             this.$http.get('http://localhost:8081/boards/')
             .then(response => {
-                console.log(response.data);
                 this.boardData = response.data;
                 console.log('success');
             }, error=>{
@@ -59,7 +58,7 @@ export default {
             });
         },
         toggle: function(index){
-            window.location.href ='./#/board';
+            this.$router.push({name:'BoardContent'});
             return index;
         }
     }

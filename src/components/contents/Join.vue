@@ -22,7 +22,9 @@
                 <label for="e-mail">이메일: </label>
                 <input type="email" class="form-control" id="email" v-model="joinData.email" required >
             </div>
-            <button type="submit" class="btn btn-default" @click="checkJoinData(joinData, userData);" >가입</button>
+            <div class="row text-center">
+                <button type="submit" class="btn btn-default" @click="checkJoinData(joinData, userData);" >가입</button>
+            </div>
         </form>
     </div>
 </template>
@@ -40,7 +42,7 @@
             getUserList: function(userData){
                 this.$http.get('http://localhost:8081/users/', {'Access-Control-Allow-Origin': '*'})
                 .then(response => {
-                    this.userData=response.data._embedded.users;
+                    this.userData=response.data;
                 }, error=>{
                     console.log(error);
                 });
@@ -53,27 +55,31 @@
                     "name":joinData.name,
                     "email":joinData.email
                 }
-
-                this.$http
-                .post('http://localhost:8081/users/', req)
-                .then((response) => {
-                    console.log('success');
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+                if(this.joinResult=="true"){
+                    this.$http.post('http://localhost:8081/users/', req)
+                    .then((response) => {
+                        this.$router.push({name:'Home'});
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                }
             },
             checkJoinData: function(joinData, userData){
-                for(var i=0; i<userData.length; i++) {
-                    if(joinData.id==userData[i].id){
-                        alert("id 중복!!");
-                        break;
+                this.joinResult=="false";
+                if(userData.length > 0){
+                    for(var i=0; i<userData.length; i++) {
+                        if(joinData.id==userData[i].id){
+                            alert("id 중복!!");
+                            break;
+                        }
                     }
                 }
 
                 if(joinData.pwd!=joinData.pwdRe){
-                    alert('비밀번호 확인 값이 일치하지 않습니다.');
+                    alert('비밀번호가 일치하지 않습니다.');
                 }
+
             }
         }
     }

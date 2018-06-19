@@ -69,12 +69,11 @@ export default {
             },
             checkLoginData: function(loginData, userData){
                 for(var i=0; i<userData.length; i++) {
-                    if(loginData.id!=userData[i].id){
-                        alert("id 중복!!");
+                    if(loginData.id==userData[i].id&&loginData.password==userData[i].password){
+                        this.$router.push({name:'BoardList'});
                         break;
-                    } else if(loginData.password!=userData[i].password) {
-                        alert("Password error!!");
-                        break;
+                    } else {
+                        
                     }
                 }
             }
