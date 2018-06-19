@@ -1,9 +1,6 @@
 <template>
     <div class="container">
-        <div id="list">
-        <h3>게시판</h3>
-        </div>
-        
+       
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
@@ -72,9 +69,6 @@ export default {
       width: 80%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */
       padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
-    }
-    #list {
-      text-align: center;
     }
     table{
         margin-top: 20px;
