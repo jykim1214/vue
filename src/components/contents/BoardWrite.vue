@@ -1,6 +1,6 @@
 <template>
-<div class="container" style="bord:1px">
-    <h2 class="text-center">글 작성</h2>
+<div class="container" style="border-style:solid 1px black">
+    <h3 class="text-center" style="padding-bottom:20px">티켓 양도 글 작성</h3>
     <form class="form" v-on:submit.prevent="submit(boardData)">
         <div class="row">
             <div class="col-md-12">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-2" style="width:100px">
-                            <label class="control-label">날짜</label>
+                            <label class="control-label">공연 일자</label>
                         </div>
                         <div class="col-sm-10" style="width:300px">
                             <input type="date" class="form-control" id="date"  v-model="boardData.date" required>
@@ -37,7 +37,6 @@
                         <label>내용</label>
                         <textarea class="form-control" rows="10"  v-model="boardData.content" required>
                         </textarea>
-                        <img :src="image" style="width:100px; height:100px;"/>
                     </div>
                 </form>
             </div>
@@ -46,7 +45,7 @@
                     <label for="file" class="control-label">첨부파일</label>
                 </div>
                 <div class="col-sm-10 btn-file" style="width:100px">
-                    <input type="file" id="imageURL" data-display-target="attachFile" v-on:change="handleFileChange" accept="image/*">
+                    <input type="file" id="imageURL" data-display-target="attachFile" v-on:change="handleFileChange" accept="image/png">
                 </div>
             </div>
         </div>
@@ -83,6 +82,8 @@ export default {
             reader.onload = (e) => {
                 vm.image = e.target.result;
                 this.boardData.attachFileImg = vm.image;
+                console.log(this.boardData.attachFileImg);
+                console.log('--------------------------')
                 console.log(window.localStorage);
             };
             reader.readAsDataURL(file);

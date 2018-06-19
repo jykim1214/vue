@@ -55,9 +55,11 @@
                     "name":joinData.name,
                     "email":joinData.email
                 }
+                console.log(req);
                 if(this.joinResult=="true"){
                     this.$http.post('http://localhost:8081/users/', req)
                     .then((response) => {
+                        console.log('success');
                         this.$router.push({name:'Home'});
                     })
                     .catch((error) => {
@@ -66,7 +68,7 @@
                 }
             },
             checkJoinData: function(joinData, userData){
-                this.joinResult=="false";
+                console.log('.....');
                 if(userData.length > 0){
                     for(var i=0; i<userData.length; i++) {
                         if(joinData.id==userData[i].id){

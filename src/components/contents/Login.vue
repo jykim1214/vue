@@ -82,7 +82,7 @@ export default {
 
 <style>
 .row{
-    margin-top: 80px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 </style>
