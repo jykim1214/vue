@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="nav">
+      <li class="left">HOME</li>
+    </div>
     <div class="header">
       <a href="./" ><img src="../assets/header.png" style="padding-top:30px;"></a>
     </div>

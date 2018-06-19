@@ -47,7 +47,7 @@ export default {
             getUserList: function(userData){
                 this.$http.get('http://localhost:8081/users/', {'Access-Control-Allow-Origin': '*'})
                 .then(response => {
-                    this.userData=response.data._embedded.users;
+                    this.userData=response.data;
                 }, error=>{
                     console.log(error);
                 });
@@ -76,10 +76,6 @@ export default {
                         alert("Password error!!");
                         break;
                     }
-                }
-
-                if(joinData.pwd!=joinData.pwdRe){
-                    alert('비밀번호 확인 값이 일치하지 않습니다.');
                 }
             }
         }

@@ -35,7 +35,9 @@
                 <form>
                     <div style="padding-bottom:20px">
                         <label>내용</label>
-                        <textarea class="form-control" rows="10"  v-model="boardData.content" required></textarea>
+                        <textarea class="form-control" rows="10"  v-model="boardData.content" required>
+                        </textarea>
+                        <img :src="image" style="width:100px; height:100px;"/>
                     </div>
                 </form>
             </div>
@@ -44,7 +46,7 @@
                     <label for="file" class="control-label">첨부파일</label>
                 </div>
                 <div class="col-sm-10 btn-file" style="width:100px">
-                    <input type="file" data-display-target="attachFile" v-on:change="handleFileChange">
+                    <input type="file" id="imageURL" data-display-target="attachFile" v-on:change="handleFileChange" accept="image/*">
                 </div>
             </div>
         </div>
@@ -60,6 +62,7 @@ export default {
   name: 'board',
   data(){
         return {
+            image: '',
             boardData:[]        
         }
     },
@@ -67,6 +70,22 @@ export default {
         handleFileChange(e){
             console.log(e.target.files[0].name);
             this.boardData.attachFile = e.target.files[0].name;
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            this.createImage(files[0]);
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+            
+            reader.onload = (e) => {
+                vm.image = e.target.result;
+                this.boardData.attachFileImg = vm.image;
+                console.log(window.localStorage);
+            };
+            reader.readAsDataURL(file);
         },
         submit: function(boardData) {
             let req = {
@@ -74,12 +93,14 @@ export default {
                 "name":boardData.name,
                 "date":boardData.date,
                 "content":boardData.content,
-                "attachFile":boardData.attachFile
+                "attachFile":boardData.attachFile,
+                "attachFileImg":boardData.attachFileImg
             }
             
             this.$http.post('http://localhost:8081/boards/', req)
                 .then((response) => {
                     console.log('success');
+                    console.log(boardData);
                 })
                 .catch((error) => {
                     console.log(error);

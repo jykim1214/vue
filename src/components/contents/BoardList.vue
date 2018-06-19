@@ -51,7 +51,8 @@ export default {
         getBoardData: function(){
             this.$http.get('http://localhost:8081/boards/')
             .then(response => {
-                this.boardData = response.data._embedded.boards;
+                console.log(response.data);
+                this.boardData = response.data;
                 console.log('success');
             }, error=>{
                 console.log(error);
