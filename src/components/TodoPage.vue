@@ -8,7 +8,7 @@
         </span>
     </div>
     <ul class="list-group">
-        <li class="list-group-item" v-for="(todo, index) in todos"> {{todo.name}}
+        <li class="list-group-item" v-for="(todo, index) in todos" v-bind:key="todo.key">  {{todo.name}}
             <div class="btn-group pull-right" style="font-size: 12px; line-height: 1;">
                 <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     더보기<span class="caret"></span>

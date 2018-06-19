@@ -40,6 +40,7 @@
 </template>
 
 <script>
+var storage = localStorage;
 export default {
     name:'app',
     data: function() {
@@ -58,6 +59,7 @@ export default {
             });
         },
         toggle: function(index){
+            storage.setItem('index', index);
             this.$router.push({name:'BoardContent'});
             return index;
         }
@@ -66,9 +68,6 @@ export default {
 </script>
 
 <style>
-.container{
-    margin-top:70px;
-}
     #container {
       width: 80%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */

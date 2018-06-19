@@ -114,9 +114,6 @@ export default {
 </script>
 
 <style>
-    .container{
-        margin-top:70px;
-    }
     form{
         text-align: left;
     }

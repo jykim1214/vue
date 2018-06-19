@@ -86,9 +86,6 @@
 </script>
 
 <style>
-    .container{
-        margin-top:50px;
-    }
     .form-control{
         margin-top: 10px;
         text-align: left;
@@ -103,8 +100,7 @@
     #id, #pwd, #email, #usr, #pwdRe{
         width:40%;
     }
-    a{
-        margin-top:20px; 
-        text-align:center;
+    button{
+        margin-top:20px;
     }
 </style>

@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import Login from './contents/Login'
+import BoardList from './contents/BoardList'
 export default {
   name: 'Home',
   components: {
-    'app-detail': Login
+    'app-detail': BoardList
   },
   data(){
     return {

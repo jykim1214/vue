@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TodoPage from '@/components/TodoPage'
-import Example from '@/components/Example'
+import Login from '@/components/contents/Login'
 import Home from '@/components/Home'
 import Join from '@/components/contents/Join'
 import BoardWrite from '@/components/contents/BoardWrite'
@@ -19,9 +19,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/example',
-      name: 'Example',
-      component: Example
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
       path: '/userList',
