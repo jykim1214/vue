@@ -14,7 +14,7 @@
                             <div class="col-md-2">공연 일자</div>
                             <div class="col-md-2 text-left">{{boardData.date}}</div>
                             <div class="col-md-2">조회수</div>
-                            <div class="col-md-2 text-left">123</div>
+                            <div class="col-md-2 text-left">0</div>
                         </div>
                         <div class="row">
                             <div class="col-md-2" style="height:355px;">내용</div>
