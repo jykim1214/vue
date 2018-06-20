@@ -35,6 +35,7 @@
 </template>
 
 <script>
+var storage = localStorage;
 export default {
     name: 'Join',
     data(){
@@ -53,26 +54,15 @@ export default {
             });
         },
         submit: function(loginData) {
-            let req = {
-                "id":loginData.id,
-                "password":loginData.pwd
-            }
-
-            this.$http.post('http://localhost:8081/logins/', req)
-            .then((response) => {
-                this.$router.push({name:'BoardList'});
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            storage.setItem('loginId', this.loginData.id);
+            storage.setItem('loginPw', this.loginData.password);
+            this.$router.push({name:'Home'});
         },
         checkLoginData: function(loginData, userData){
             for(var i=0; i<userData.length; i++) {
                 if(loginData.id==userData[i].id&&loginData.password==userData[i].password){
-                    //
                     break;
                 } else {
-                        
                 }
             }
         }

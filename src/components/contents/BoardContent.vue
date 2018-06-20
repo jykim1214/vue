@@ -75,8 +75,6 @@ export default {
             .then(response=>{
                 var index = storage.getItem('index');
                 this.boardData = response.data[index];
-                console.log(response.data);
-                console.log(this.boardData.attachFileImg);
             }, error=>{
                 console.log(error);
             });
@@ -96,7 +94,6 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
-                setTimeout(this.submit, 5000);
         },
         getCommentList: function() {
             this.$http.get('http://localhost:8081/comments/', {'Access-Control-Allow-Origin': '*'})

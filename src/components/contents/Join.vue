@@ -56,16 +56,16 @@
                     "email":joinData.email
                 }
                 console.log(req);
-                if(this.joinResult=="true"){
-                    this.$http.post('http://localhost:8081/users/', req)
-                    .then((response) => {
-                        console.log('success');
-                        this.$router.push({name:'Home'});
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-                }
+                
+                this.$http.post('http://localhost:8081/users/', req)
+                .then((response) => {
+                    console.log('success');
+                    this.$router.push({name:'Home'});
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+                
             },
             checkJoinData: function(joinData, userData){
                 console.log('.....');

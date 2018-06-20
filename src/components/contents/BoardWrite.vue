@@ -82,9 +82,6 @@ export default {
             reader.onload = (e) => {
                 vm.image = e.target.result;
                 this.boardData.attachFileImg = vm.image;
-                console.log(this.boardData.attachFileImg);
-                console.log('--------------------------')
-                console.log(window.localStorage);
             };
             reader.readAsDataURL(file);
         },

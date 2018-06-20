@@ -22,7 +22,7 @@
             </tbody>
         </table>
         <div id="write">
-            <a href="./#/write">글쓰기</a>
+            <button type="submit" class="btn btn-default" @click="boardWrite">글쓰기</button>
         </div>
         <ul class="pagination" style="text-align:center">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -59,6 +59,16 @@ export default {
             storage.setItem('index', index);
             this.$router.push({name:'BoardContent'});
             return index;
+        },
+        boardWrite: function() {
+            var id = storage.getItem('loginId');
+            var pw = storage.getItem('loginPw');
+            
+            if(id!=null && pw!=null){
+                this.$router.push({name:'BoardWrite'});
+            } else {
+                this.$router.push({name:'Login'});
+            }
         }
     }
 }

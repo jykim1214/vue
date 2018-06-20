@@ -10,7 +10,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li style="padding-right:100px;">
-              <div class="navbar-brand" style="color:white;" @click="logInfor">{{logInfo}}</div>
+              <div class="navbar-brand" style="color:white;" @click="logInfor(logInfo)">{{logInfo}}</div>
             </li>
           </ul>
         </div>
@@ -25,35 +25,30 @@
 </template>
 
 <script>
+var storage = localStorage;
 export default {
   name:'Header',
   data: function(){
     return {
-      logData: this.getLoginData(),
       logInfo:"Login"
     }
   },
   methods: {
-    getLoginData: function(){
-      this.$http.get('http://localhost:8081/logins/', {'Access-Control-Allow-Origin': '*'})
-        .then(response => {
-            this.logData=response.data._embedded.logins;
-        }, error=>{
-            console.log(error);
-        });
-    },
-    logInfor: function() {
-      if(this.logData.length>0){
+    logInfor: function(logInfo) {
+      var id = storage.getItem('loginId');
+      var pw = storage.getItem('loginPw');
+      
+      if(id!=null && pw!=null){
         this.logInfo="Logout";
+        storage.removeItem('loginId');
+        storage.removeItem('loginPw');
         this.$router.push({name:'Home'});
       } else {
         this.logInfo="Login";
         this.$router.push({name:'Login'});
       }
     }
-
-  }
-  
+  }  
 }
 </script>
 
