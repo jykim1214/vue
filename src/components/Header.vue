@@ -9,8 +9,11 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li style="padding-right:100px;">
+            <li>
               <div class="navbar-brand" style="color:white;" @click="logInfor(logInfo)">{{logInfo}}</div>
+            </li>
+            <li style="padding-right:100px;">
+              <div class="navbar-brand" style="color:white;" v-if="logInfo==='Logout'" @click="userInfo()">회원정보</div>
             </li>
           </ul>
         </div>
@@ -30,7 +33,7 @@ export default {
   name:'Header',
   data: function(){
     return {
-      logInfo:"Login"
+      logInfo:"Logout"
     }
   },
   methods: {
@@ -54,6 +57,17 @@ export default {
         storage.removeItem('loginId');
         storage.removeItem('loginPw');
         this.$router.push({name:'Home'});
+      } else {
+        this.logInfo="Login";
+        this.$router.push({name:'Login'});
+      }
+    },
+    userInfo: function(){
+      var id = storage.getItem('loginId');
+      var pw = storage.getItem('loginPw');
+
+      if(id!=null && pw!=null){
+        this.$router.push({name:'UserContent'});
       } else {
         this.logInfo="Login";
         this.$router.push({name:'Login'});

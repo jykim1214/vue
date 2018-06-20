@@ -68,7 +68,6 @@
                 
             },
             checkJoinData: function(joinData, userData){
-                console.log('.....');
                 if(userData.length > 0){
                     for(var i=0; i<userData.length; i++) {
                         if(joinData.id==userData[i].id){

@@ -31,6 +31,7 @@
             <button class="btn btn-default" v-if="boardData.name == id" @click="boardModify(boardData)"> 수정 </button>
             <button class="btn btn-default" v-if="boardData.name == id" @click="boardDelete(boardData)"> 삭제 </button>
         </div>
+        <!-- 댓글 -->
         <form class="form" style="padding-bottom:30px;" v-on:submit.prevent="submit(commentData)">
             <div class="row" >
                 <div class="col-md-12" style="border-style:none;">
@@ -115,7 +116,10 @@ export default {
         boardDelete: function(boardData) {
             for(var i=0; i<boardData.comments.length; i++){
                 this.$http.delete('http://localhost:8081/comments/'+this.boardData.comments[i].num)
-                 .then(error=>{
+                 .then(response=> {
+                     this.$router.push({name:'BoardList'});
+                },
+                error=>{
                     console.log(error);
                 });
             }

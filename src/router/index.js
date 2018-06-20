@@ -4,6 +4,8 @@ import TodoPage from '@/components/TodoPage'
 import Login from '@/components/contents/Login'
 import Home from '@/components/Home'
 import Join from '@/components/contents/Join'
+import UserContent from '@/components/contents/UserContent'
+import UserModify from '@/components/contents/UserModify'
 import BoardWrite from '@/components/contents/BoardWrite'
 import BoardList from '@/components/contents/BoardList'
 import BoardContent from '@/components/contents/BoardContent'
@@ -33,6 +35,16 @@ export default new Router({
       path: '/join',
       name: 'Join',
       component: Join
+    },
+    {
+      path: '/userInfo',
+      name: 'UserContent',
+      component: UserContent
+    },
+    {
+      path: '/userModify',
+      name: 'UserModify',
+      component: UserModify
     },
     {
       path: '/list',

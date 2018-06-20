@@ -69,6 +69,7 @@ export default {
             for(var i=0; i<userData.length; i++) {
                 if(loginData.id==userData[i].id && loginData.password==userData[i].password){
                     console.log('login 성공!!');
+                    storage.setItem('loginNum', this.userData[i].index);
                     this.loginresult="success";
                     break;
                 } else {
