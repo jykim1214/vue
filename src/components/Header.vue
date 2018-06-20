@@ -34,7 +34,18 @@ export default {
     }
   },
   methods: {
+    createmethod: function(){
+      var id = storage.getItem('loginId');
+      var pw = storage.getItem('loginPw');
+      
+      if(id!=null && pw!=null) {
+        this.logInfo = "Logout";
+      } else {
+        this.logInfo = "Login";
+      }
+    },
     logInfor: function(logInfo) {
+      this.logInfo="Login";
       var id = storage.getItem('loginId');
       var pw = storage.getItem('loginPw');
       
@@ -53,5 +64,6 @@ export default {
 </script>
 
 <style>
+
 </style>
 

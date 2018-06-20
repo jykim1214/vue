@@ -7,6 +7,7 @@ import Join from '@/components/contents/Join'
 import BoardWrite from '@/components/contents/BoardWrite'
 import BoardList from '@/components/contents/BoardList'
 import BoardContent from '@/components/contents/BoardContent'
+import BoardModify from '@/components/contents/BoardModify'
 import UserList from '@/components/contents/UserList'
 
 Vue.use(Router)
@@ -47,6 +48,11 @@ export default new Router({
       path: '/board',
       name: 'BoardContent',
       component: BoardContent
+    },
+    {
+      path: '/modify',
+      name: 'BoardModify',
+      component: BoardModify
     }
   ]
 })

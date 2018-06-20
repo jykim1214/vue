@@ -40,6 +40,7 @@ export default {
     name: 'Join',
     data(){
         return {
+            loginresult: "error",
             userData:this.getUserList(),
             loginData:[]
         }
@@ -54,15 +55,24 @@ export default {
             });
         },
         submit: function(loginData) {
-            storage.setItem('loginId', this.loginData.id);
-            storage.setItem('loginPw', this.loginData.password);
-            this.$router.push({name:'Home'});
+            if(this.loginresult=="success"){
+                storage.setItem('loginId', this.loginData.id);
+                storage.setItem('loginPw', this.loginData.password);
+                this.$router.push({name:'Home'});    
+            } else {
+                alert('아이디와 비밀번호가 일치하지 않습니다.');
+            }
         },
         checkLoginData: function(loginData, userData){
+            this.loginresult="error";
+
             for(var i=0; i<userData.length; i++) {
-                if(loginData.id==userData[i].id&&loginData.password==userData[i].password){
+                if(loginData.id==userData[i].id && loginData.password==userData[i].password){
+                    console.log('login 성공!!');
+                    this.loginresult="success";
                     break;
                 } else {
+                    console.log('login 실패!!');
                 }
             }
         }

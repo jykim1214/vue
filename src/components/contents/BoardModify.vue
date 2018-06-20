@@ -2,7 +2,7 @@
 <div class="container" style="border-style:solid 1px black">
     <h3 class="text-center" style="padding-bottom:20px">티켓 양도 글 작성</h3>
     <form class="form" v-on:submit.prevent="submit(boardData)">
-        <div class="row">
+        <div class="row" v-if="boardData">
             <div class="col-md-12">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
@@ -10,7 +10,7 @@
                             <label class="control-label">제목</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title"  v-model="boardData.title" required>
+                            <input type="text" class="form-control" value="aaa" v-model="boardData.title" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <button type="submit" class="btn btn-default" style="width: 100px;">작성하기</button>
+            <button type="submit" class="btn btn-default" style="width: 100px;">수정</button>
         </div>
     </form>
 </div>
@@ -64,11 +64,20 @@ export default {
         return {
             id: storage.getItem('loginId'),
             image: '',
-            boardData:[]        
+            boardData: this.getBoardData()        
         }
     },
     methods:{
-        
+        getBoardData: function() {
+            this.$http.get('http://localhost:8081/boards/', {'Access-Control-Allow-Origin': '*'})
+            .then(response=>{
+                var index = storage.getItem('index');
+                this.boardData = response.data[index];
+                console.log(this.boardData);
+            }, error=>{
+                console.log(error);
+            });
+        },
         handleFileChange(e){
             this.boardData.attachFile = e.target.files[0].name;
             var files = e.target.files || e.dataTransfer.files;
@@ -96,8 +105,8 @@ export default {
                 "attachFile":boardData.attachFile,
                 "attachFileImg":boardData.attachFileImg
             }
-            
-            this.$http.post('http://localhost:8081/boards/', req)
+            var num = storage.getItem('boardModify');
+            this.$http.put('http://localhost:8081/boards/'+num, req)
             .then((response) => {
                 this.$router.push({name:'BoardList'});
                 console.log('success');
