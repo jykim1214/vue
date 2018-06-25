@@ -5,20 +5,20 @@
                 <div class="col-md-12" style="margin-bottom:20px;" v-if="boardData">
                     <form class="form-horizontal">
                         <div class="row">
-                            <div class="col-md-2">제목</div>
-                            <div class="col-md-10 text-left" >{{boardData.title}}</div>
+                            <div class="col-md-2 col-xs-2">제목</div>
+                            <div class="col-md-10 col-xs-10 text-left" >{{boardData.title}}</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2">작성자</div>
-                            <div class="col-md-2 text-left">{{boardData.name}}</div>
-                            <div class="col-md-2">공연 일자</div>
-                            <div class="col-md-2 text-left">{{boardData.date}}</div>
-                            <div class="col-md-2">조회수</div>
-                            <div class="col-md-2 text-left">0</div>
+                            <div class="col-md-2 col-xs-2">작성자</div>
+                            <div class="col-md-2 col-xs-2 text-left">{{boardData.name}}</div>
+                            <div class="col-md-2 col-xs-2">공연 일자</div>
+                            <div class="col-md-2 col-xs-2 text-left">{{boardData.date}}</div>
+                            <div class="col-md-2 col-xs-2">조회수</div>
+                            <div class="col-md-2 col-xs-2 text-left">0</div>
                         </div>
                         <div class="row">
-                            <div class="col-md-2" style="height:355px;">내용</div>
-                            <div class="col-mn-10">
+                            <div class="col-md-2 col-xs-2" style="height:355px;">내용</div>
+                            <div class="col-mn-10 col-xs-10">
                                 <img :src="boardData.attachFileImg" class="col-mn-10 text-left img-fluid" style="width:300px; height:200px;"/>
                                 <div class="text-left" style="margin:10px; height:100px; border-style:none">{{boardData.content}}</div>
                             </div>
@@ -34,15 +34,15 @@
         <!-- 댓글 -->
         <form class="form" style="padding-bottom:30px;" v-on:submit.prevent="submit(commentData)">
             <div class="row" >
-                <div class="col-md-12" style="border-style:none;">
+                <div class="col-md-12 col-xs-12" style="border-style:none;">
                     <div class="text-left" style="border-style:none; padding-bottom:50px"><h4> 댓글 달기 </h4></div>
                     <form class="form">
                         <div class="row">
-                            <div class="col-md-12" style="border-style:solid none none none;" v-if="boardData">
+                            <div class="col-md-12 col-xs-12" style="border-style:solid none none none;" v-if="boardData">
                                 <div class="row" style="border-style:none none solid none; border-width:1px;" v-for="(comment, index) in boardData.comments" v-bind:key="comment.key">
-                                    <div class="col-md-2" style="border-style:none; background-color:white;">{{comment.name}} </div>
-                                    <div class="col-md-8 text-left" style="border-style:none"> {{comment.comment}} </div>
-                                    <div class="col-mn-2 text-center">
+                                    <div class="col-md-2 col-xs-2" style="border-style:none; background-color:white;">{{comment.name}} </div>
+                                    <div class="col-md-8 col-xs-8 text-left" style="border-style:none"> {{comment.comment}} </div>
+                                    <div class="col-mn-2 col-xs-2 text-center">
                                         <button class="btn btn-link" v-if="comment.name == id"> 수정 </button>
                                         <button class="btn btn-link" v-if="comment.name == id" @click="deleteComment(index)"> 삭제 </button>
                                     </div>
@@ -51,13 +51,13 @@
                         </div>
                     </form>
                     <div class="row">
-                        <div class="col-md-2" style="border-style:none; background-color:white;">
+                        <div class="col-md-2 col-xs-2" style="border-style:none; background-color:white;">
                             <div class="form-control" style="background-color:#F2F2F2">{{id}}</div>
                         </div>
-                        <div class="col-md-8" style="border-style:none">
+                        <div class="col-md-8 col-xs-8" style="border-style:none">
                             <input type="text" class="form-control" placeholder="comment" style="background-color:#F2F2F2" v-model="commentData.comment" required>
                         </div>
-                        <div class="col-md-2" style="border-style:none; background-color:white;">
+                        <div class="col-md-2 col-xs-2" style="border-style:none; background-color:white;">
                             <button type="submit"  class="btn btn-default">등록</button>
                         </div>
                     </div>

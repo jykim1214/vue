@@ -3,27 +3,27 @@
         <form class="form">
             <div class="row">
                 <h3 class="text-center">회원정보</h3>
-                <div class="col-md-12 " style="margin-bottom:20px; margin-left:80px;" v-if="userData">
+                <div class="col-md-12 col-xs-12 " style="margin-bottom:20px; margin-left:80px;" v-if="userData">
                     <form class="form-horizontal">
                         <div class="row">
-                            <div class="col-md-2" style="height:50px">아이디</div>
-                            <div class="col-md-8 text-left"><div class="form-control text-left">{{userData.id}}</div></div>
+                            <div class="col-md-2 col-xs-2" style="height:50px">아이디</div>
+                            <div class="col-md-8 col-xs-8 text-left"><div class="form-control text-left">{{userData.id}}</div></div>
                         </div>
                         <div class="row" >
-                            <div class="col-md-2" style="height:50px">비밀번호</div>
-                            <div class="col-md-8 text-left"><div class="form-control text-left">{{userData.password}}</div></div>
+                            <div class="col-md-2 col-xs-2" style="height:50px">비밀번호</div>
+                            <div class="col-md-8 col-xs-8 text-left"><div class="form-control text-left">{{userData.password}}</div></div>
                         </div>
                         <div class="row" >
-                            <div class="col-md-2" style="height:50px">비밀번호 확인</div>
-                            <div class="col-md-8 text-left"><div class="form-control text-left">{{userData.passwordRe}}</div></div>
+                            <div class="col-md-2 col-xs-2" style="height:50px">비밀번호 확인</div>
+                            <div class="col-md-8 col-xs-8 text-left"><div class="form-control text-left">{{userData.passwordRe}}</div></div>
                         </div>
                         <div class="row" >
-                            <div class="col-md-2" style="height:50px">이름</div>
-                            <div class="col-md-8 text-left"><div class="form-control text-left">{{userData.name}}</div></div>
+                            <div class="col-md-2 col-xs-2" style="height:50px">이름</div>
+                            <div class="col-md-8 col-xs-8 text-left"><div class="form-control text-left">{{userData.name}}</div></div>
                         </div>
                         <div class="row" >
-                            <div class="col-md-2" style="height:50px">이메일</div>
-                            <div class="col-md-8 text-left"><div class="form-control text-left">{{userData.email}}</div></div>
+                            <div class="col-md-2 col-xs-2" style="height:50px">이메일</div>
+                            <div class="col-md-8 col-xs-8 text-left"><div class="form-control text-left">{{userData.email}}</div></div>
                         </div>
                         <div class="row text-center">
                             <button type="submit" class="btn btn-default" @click="userInfoModify(userData);" >수정</button>
